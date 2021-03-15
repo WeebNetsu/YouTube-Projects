@@ -1,0 +1,104 @@
+REMEMBER: Copy line by line, NOT an entire chunk! (unless you have to paste it into a file)
+
+sudo apt update && sudo apt upgrade
+
+sudo fallocate -l 1G /swapfile  
+sudo dd if=/dev/zero of=/swapfile bs=1024 count=1048576  
+sudo chmod 600 /swapfile  
+sudo mkswap /swapfile  
+sudo swapon /swapfile  
+sudo vim /etc/fstab 
+
+In VIM:
+/swapfile swap swap defaults 0 0
+
+[OUTSIDE VIM]
+
+sudo apt-get install apache2 mysql-client mysql-server libapache2-mod-wsgi python3-pip php libapache2-mod-php php-mysql
+
+sudo ufw app list
+[If you only want port 80 to be accessed (below)]
+sudo ufw allow in "Apache"
+[If you only want port 80 to be accessed (above)]
+sudo service apache2 start
+
+[CHECK THAT WEB SERVER IS ONLINE]
+
+sudo mysql_secure_installation
+sudo mysql
+sudo a2dissite 000-default
+sudo a2enmod wsgi
+cd /var/www/
+sudo mkdir -p FlaskApp/FlaskApp
+sudo chown -R $USER:$USER FlaskApp 
+cd FlaskApp/FlaskApp
+mkdir static templates
+vim __init__.py
+
+In VIM:
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def homepage():
+    return "Hi there, how ya doin?"
+
+
+if __name__ == "__main__":
+    app.run()
+
+[OUTSIDE VIM]
+
+sudo pip3 install virtualenv
+virtualenv venv
+source venv/bin/activate
+pip3 install Flask
+python3 __init__.py
+deactivate
+
+sudo vim /etc/apache2/sites-available/FlaskApp.conf
+
+In VIM:
+<VirtualHost *:80>
+	ServerName website.com
+	ServerAdmin admin@mywebsite.com
+	WSGIDaemonProcess FlaskApp python-path=/var/www/FlaskApp:/var/www/FlaskApp/FlaskApp/venv/lib/python3.8/site-packages
+	WSGIProcessGroup FlaskApp
+	WSGIScriptAlias / /var/www/FlaskApp/flaskapp.wsgi
+	<Directory /var/www/FlaskApp/FlaskApp/>
+		Order allow,deny
+		Allow from all
+	</Directory>
+	Alias /static /var/www/FlaskApp/FlaskApp/static
+	<Directory /var/www/FlaskApp/FlaskApp/static/>
+		Order allow,deny
+		Allow from all
+	</Directory>
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	LogLevel warn
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+[OUTSIDE VIM]
+
+sudo a2ensite FlaskApp
+sudo service apache2 reload
+cd /var/www/FlaskApp
+vim flaskapp.wsgi
+
+In VIM:
+#!/usr/bin/python3
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0,"/var/www/FlaskApp/")
+
+from FlaskApp import app as application
+application.secret_key = 'key'
+
+[OUTSIDE VIM]
+
+sudo service apache2 restart
+
+[Website is up!]
