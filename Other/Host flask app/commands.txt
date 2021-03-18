@@ -26,6 +26,9 @@ sudo service apache2 start
 
 sudo mysql_secure_installation
 sudo mysql
+
+[EXIT MySQL]
+
 sudo a2dissite 000-default
 sudo a2enmod wsgi
 cd /var/www/
