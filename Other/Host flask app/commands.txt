@@ -14,7 +14,10 @@ In VIM:
 
 [OUTSIDE VIM]
 
-sudo apt-get install apache2 mysql-client mysql-server libapache2-mod-wsgi python3-pip php libapache2-mod-php php-mysql
+sudo apt-get install apache2 mysql-client mysql-server libapache2-mod-wsgi-py3 python3-pip php libapache2-mod-php php-mysql
+
+[IF you use Python2 and NOT Python3]
+[Install libapache2-mod-wsgi instead of libapache2-mod-wsgi-py3]
 
 sudo ufw app list
 [If you only want port 80 to be accessed (below)]
