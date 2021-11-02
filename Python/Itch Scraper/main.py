@@ -59,9 +59,12 @@ class ItchScraper():
         else:
             print(f"\n\t\tTop 10 games for {self.platform if not self.platform == 'all' else 'all platforms'} with tag {self.tag}\n")
             
-            for game in range(10):
-                print(game_names[game])
-                print()
+            counter = 0
+            for game in game_names:
+                counter += 1
+                if counter > 10:
+                    break
+                print(game)
 
 if __name__ == '__main__':
     scrape = ItchScraper()
