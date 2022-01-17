@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+<!-- Block Begin -->
+{% block head %}
+<title>Tor-Friends</title>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/index.css') }}"
+/>
+{% endblock %}
+<!-- Block End -->
+
+<!-- Block Begin -->
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <main id="all-items">
+        <h1 class="center">All Torrents</h1>
+        {% for key, item in torrents.items() %}
+        <div class="item">
+          <div class="row">
+            <div class="col-sm-8">
+              <a href="{{ item['magnet'] }}" class="item-link"
+              >{{ item['name'] }}</a>
+            </div>
+  
+            <div class="col-sm-4">
+                <!-- note: we have a function to work with this button in general.js -->
+              <button class="btn btn-outline-secondary btn-sm show-details">
+                Details <i class="fa fa-caret-down"></i>
+                <span class="for-item">for:{{ rsc(item['name']).lower() }}</span>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="details hidden"
+            id="{{ rsc(item['name']).lower() }}"
+          >
+            <table class="table-dark table-hover">
+              <tr>
+                <td>Name</td>
+                <td>{{ item["full_name"] }}</td>
+              </tr>
+
+              <tr>
+                <td>Size</td>
+                <td>{{ item["size"] }}{{ item["size_type"] }}</td>
+              </tr>
+
+              <tr>
+                <td>Type</td>
+                <td>{{ item["type"] }} -> {{ item["minor_type"] }}</td>
+              </tr>
+
+              <tr>
+                <td>Description</td>
+                <td>{{ item["desc"] }}</td>
+              </tr>
+
+              <tr>
+                <td>Owner</td>
+                <td>{{ item["user"] }}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        {% endfor %}
+      </main>
+    </div>
+  </div>
+</div>
+{% endblock %}
+<!-- Block End -->

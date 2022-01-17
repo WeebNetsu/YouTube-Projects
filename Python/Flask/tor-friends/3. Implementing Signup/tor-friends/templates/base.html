@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- ↓Background Stuff↓ -->
+    <meta charset="utf-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+
+    <!-- Add site description -->
+    <meta
+      name="description"
+      content="Upload and share your files with the world!"
+    />
+
+    <!-- ↓Image on tab↓ -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') }}" type="image/x-icon">
+
+    <!-- Fontawesome -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- ↓Bootstrap↓ -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Block Begin -->
+    {% block head %} {% endblock %}
+    
+    <!-- Block End -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}" />
+  </head>
+  <body>
+    {% if not no_nav %}
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+      <!-- Brand -->
+      <a class="navbar-brand" href="/">Tor-Friends</a>
+
+      <!-- Toggler/collapsibe Button -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#collapsibleNavbar"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar links -->
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/"><i class="fa fa-home"></i> Home</a>
+          </li>
+          {% for stat in session %}
+            {% if not stat["guest"] %}
+            <li class="nav-item">
+              <a class="nav-link" href="/user/"
+                ><i class="fa fa-user"></i> Account</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="/torrent/"
+                ><i class="fa fa-upload"></i> Add Torrent</a
+              >
+            </li>
+            
+              {% if stat["mod"] %}
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/"
+                  ><i class="fa fa-unlock-alt"></i> Admin</a
+                >
+              </li>
+              {% endif %}
+
+              <li class="nav-item">
+                <a class="nav-link" href="/logout/"
+                  ><i class="fa fa-sign-out"></i> Logout</a
+                >
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="/logout/"
+                  ><i class="fa fa-sign-out"></i> Sign In</a
+                >
+              </li>
+            {% endif %}
+          <!--  -->
+          {% endfor %}
+
+          <li class="nav-item">
+            <a class="nav-link" href="/rules/"
+              ><i class="fa fa-book"></i> Rules</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+    {% endif %}
+
+    <!-- Block Begin -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+
+    <!-- check if there are actually messages to display -->
+    {% if messages %}
+    <!-- loop through all the messages -->
+    {% for category, msg in messages %}
+    <!-- display the messages -->
+    {% if category == "error" %}
+      <div class="alert alert-danger alert-dismissible fade show">
+    {% else %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show">
+    {% endif %}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ msg }}
+    </div>
+    {% endfor %}
+    <!-- For End -->
+    {% endif %}
+    <!-- Block Begin -->
+    {% endwith %}
+    <!--  -->
+
+    {% block body %} {% endblock %}
+
+    <script src="{{ url_for('static', filename='js/general.js') }}"></script>
+
+    {% block scripts %} {% endblock %}
+  </body>
+</html>
