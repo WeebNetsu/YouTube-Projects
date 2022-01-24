@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+
+<!-- Block Begin -->
+{% block head %}
+<title>Torrent Modifications</title>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/torrent-mod.css') }}"
+/>
+{% endblock %}
+<!-- Block End -->
+
+<!-- Block Begin -->
+{% block body %}
+<div class="container">
+  {% if add_torrent %}
+  <form action="/torrent/add" method="post">
+    <div class="form-group">
+      <label for="full-name">Full Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="The Elder Scrolls V: Skyrim"
+        id="full-name"
+        name="full-name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="display-name">Display Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Skyrim"
+        id="display-name"
+        name="display-name"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="magnet">Magnet Link:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="magnet:?xt=urn:btih:5f7f8..."
+        id="magnet"
+        name="magnet"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="file-size">File Size:</label>
+      <div class="form-row">
+        <div class="col">
+          <input
+            type="number"
+            class="form-control"
+            id="file-size"
+            placeholder="500"
+            name="file-size"
+            required
+          />
+        </div>
+        <div class="col">
+          <select class="form-control" id="sel1" name="file-size-type">
+            <option value="KB">KB (Kilobytes)</option>
+            <option selected value="MB">MB (Megabytes)</option>
+            <option value="GB">GB (Gigabytes)</option>
+            <option value="TB">TB (Terrabytes)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>File Type:</label>
+      <div class="form-row">
+        <div class="col">
+          <select class="form-control" id="file-type-general" id="sel2" name="file-type">
+            <option value="Video" selected>Video</option>
+            <option value="Game">Game</option>
+            <option value="Application">Application</option>
+            <option value="Music">Music</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="col">
+          <select class="form-control" id="file-type-minor" name="file-type-minor">
+            <option value="Video">Video</option>
+            <option value="Movie" selected>Movie</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="full-name">Description:</label>
+      <textarea
+        id="description"
+        placeholder="This movie is about..."
+        class="form-control"
+        maxlength="200"
+        name="desc"
+      ></textarea>
+      <p id="word-count"><span id="count">0</span>/200</p>
+    </div>
+  {% else %}
+  <form action="/torrent/edit/{{ tor_id }}" method="post">
+    <div class="form-group">
+      <label for="full-name">Full Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="The Elder Scrolls V: Skyrim"
+        id="full-name"
+        name="full-name"
+        required
+        value="{{ data['full_name'] }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="display-name">Display Name:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Skyrim"
+        id="display-name"
+        name="display-name"
+        required
+        value="{{ data['name'] }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="magnet">Magnet Link:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="magnet:?xt=urn:btih:5f7f8..."
+        id="magnet"
+        name="magnet"
+        required
+        value="{{ data['magnet'] }}"
+      />
+    </div>
+
+    <div class="form-group">
+      <p style="color:red;">Remember to update <b>file size <i>type</i></b> and <b>file type</b></p>
+      <label for="file-size">File Size:</label>
+      <div class="form-row">
+        <div class="col">
+          <input
+            type="number"
+            class="form-control"
+            id="file-size"
+            placeholder="500"
+            name="file-size"
+            required
+            value="{{ data['size'] }}"
+          />
+        </div>
+        <div class="col">
+          <select class="form-control" id="sel1" name="file-size-type">
+            <option value="KB">KB (Kilobytes)</option>
+            <option selected value="MB">MB (Megabytes)</option>
+            <option value="GB">GB (Gigabytes)</option>
+            <option value="TB">TB (Terrabytes)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>File Type:</label>
+      <div class="form-row">
+        <div class="col">
+          <select class="form-control" id="file-type-general" id="sel2" name="file-type">
+            <option value="Video" selected>Video</option>
+            <option value="Game">Game</option>
+            <option value="Application">Application</option>
+            <option value="Music">Music</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="col">
+          <select class="form-control" id="file-type-minor" name="file-type-minor">
+            <option value="Video">Video</option>
+            <option value="Movie" selected>Movie</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="full-name">Description:</label>
+      <textarea
+        id="description"
+        placeholder="This movie is about..."
+        class="form-control"
+        maxlength="200"
+        name="desc"
+      >{{ data['desc'] }}</textarea>
+      <p id="word-count"><span id="count">0</span>/200</p>
+    </div>
+  {% endif %}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>  
+{% endblock %}
+<!-- Block End -->
+
+<!-- Block Begin -->
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/torrent-form.js') }}"></script>
+{% endblock %}
+<!-- Block End -->
