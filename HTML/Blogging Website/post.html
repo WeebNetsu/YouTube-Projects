@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Add site description -->
+		<meta name="description" content="Post a blog to Bloggers Paradise!" />
+
+		<!-- Fontawesome -->
+		<!-- https://fontawesome.com/download -->
+		<link rel="stylesheet" type="text/css" href="src/fontawesome/css/all.css" />
+
+		<title>Post Blog</title>
+
+		<link rel="shortcut icon" href="src/images/logo.png" type="image/x-icon" />
+	</head>
+	<body>
+		<nav>
+			<ul>
+				<li>
+					<a href="index.html"><i class="fa fa-house-user"></i> Home</a>
+				</li>
+				<li>
+					<a href="profile.html"><i class="fa fa-user"></i> Your Profile</a>
+				</li>
+				<li>
+					<a href="post.html"
+						><i class="fa-solid fa-feather-pointed"></i> Post Blog</a
+					>
+				</li>
+			</ul>
+		</nav>
+
+		<form method="post">
+			<label for="title">Blog Title: </label>
+			<br />
+			<input
+				type="text"
+				placeholder="At my job today..."
+				name="title"
+				id="title"
+                minlength="10"
+                maxlength="30"
+                required
+			/>
+			<br />
+			<br />
+			<label for="content">Blog Content: </label>
+			<br />
+			<textarea
+				name="content"
+				placeholder="This week was really strange..."
+				id="content"
+				cols="30"
+				rows="10"
+                minlength="50"
+                maxlength="500"
+                required
+			></textarea>
+
+            <br>
+
+            <input type="submit" value="Post!">
+		</form>
+	</body>
+</html>
