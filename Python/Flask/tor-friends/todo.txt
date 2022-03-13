@@ -1,2 +1,1 @@
-Account page
 admin page

@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+<!-- Block Begin -->
+{% block head %}
+<title>Rules</title>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/rules.css') }}"
+/>
+{% endblock %}
+<!-- Block End -->
+
+<!-- Block Begin -->
+{% block body %}
+<div class="container">
+  <h1 class="center">Site Rules</h1>
+  <div class="row">
+    <div class="col">
+      <h2>Short Version</h2>
+      <ul>
+        <li>Nothing illegal</li>
+        <li>Seed</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <h2>Long Version</h2>
+      <p>
+        It goes without saying, illegal stuff is obviously off-limits. Child
+        pornography, gore, viruses, or anything of the sort is
+        <b>NOT</b> allowed. In terms of torrents, the only torrents you're
+        allowed to add are those containing files that
+        <b>you own (have rights to)</b>. If you torrent something, seed it.
+      </p>
+
+      <p>
+        This website is just an experiment, if things gets out of hand then I
+        will remove the website forever.
+      </p>
+    </div>
+  </div>
+
+  <hr />
+
+  <h3>FAQs</h3>
+  <div class="row">
+    <div class="col-md-3 faq">
+      <h5>Why am I getting an "Internal Server Error"?</h5>
+      <p>
+        The server is very slow and I lack the funds to upgrade it. If you get
+        the error, try reloading the page.
+      </p>
+    </div>
+
+    <div class="col-md-3 faq">
+      <h5>A torrent has no seeds!</h5>
+      <p>Click the report button and the mods will remove it.</p>
+    </div>
+
+    <div class="col-md-3 faq">
+      <h5>How do I stay a good torrent owner?</h5>
+      <p>
+        Simple, seed it as much as possible and if you're the only seed and you
+        want to remove it or lost the file, delete it from the site.
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 faq">
+      <h5>I added a new torrent, but don't see it anywhere.</h5>
+      <p>
+        The server refreshes every hour, it should be visible to everyone then.
+      </p>
+    </div>
+
+    <div class="col-md-3 faq">
+      <h5>Someone asked me for my account details.</h5>
+      <p>
+        No one here will ever ask you for you account details, don't give it to
+        them.
+      </p>
+    </div>
+
+    <div class="col-md-3 faq">
+      <h5>My account is missing.</h5>
+      <p>
+        Your account will automatically be deleted after 6 months of being
+        inactive.
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3 faq">
+      <h5>My torrent was removed and I didn't delete it!</h5>
+      <p>Torrents are automatically deleted after 6 months.</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
