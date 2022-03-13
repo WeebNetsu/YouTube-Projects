@@ -1,0 +1,68 @@
+body {
+  background-color: #222;
+  color: #fff;
+}
+
+#all-items {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+}
+#all-items .item {
+  border: 1px solid #fff;
+  padding: 1rem;
+}
+#all-items .item .item-link {
+  font-size: 1.2rem;
+}
+#all-items .item .show-details {
+  float: right;
+}
+#all-items .item .show-details .for-item {
+  display: none;
+}
+#all-items .item .details {
+  margin-top: 0.5rem;
+}
+#all-items .item .details table {
+  width: 100%;
+}
+#all-items .item .details table td {
+  padding-left: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.center {
+  text-align: center;
+}
+
+form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+form h1 {
+  font-family: "Courier New", Courier, monospace;
+  margin-bottom: 1rem;
+}
+form h1 a {
+  color: #fff;
+}
+form h1 a:hover {
+  color: #fff;
+}
+form #log_type {
+  text-align: center;
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=login.css.map */
