@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+
+<!-- Block Begin -->
+{% block head %} {% for det in session %}
+<title>{{ det["username"] }}</title>
+<!-- Block Begin -->
+{% endfor %}
+<!-- Block End -->
+
+<link
+	rel="stylesheet"
+	href="{{ url_for('static', filename='css/user.css') }}"
+/>
+{% endblock %}
+<!-- Block End -->
+
+<!-- Block Begin -->
+{% block body %}
+<div class="container">
+	{% for det in session %}
+	<div id="user-details">
+		<div class="row">
+			<div class="col-sm-3">Username:</div>
+			<div class="col">{{ det["username"] }}</div>
+			<div class="col">
+				<a href="/user/edit/username">
+					<button class="btn btn-outline-light btn-sm">
+						<i class="fa fa-pencil"></i>
+					</button>
+				</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3">Password:</div>
+			<div class="col" id="password">******</div>
+			<div class="col">
+				<a href="/user/edit/password">
+					<button class="btn btn-outline-light btn-sm">
+						<i class="fa fa-pencil"></i>
+					</button>
+				</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<button
+					type="button"
+					class="btn btn-outline-danger"
+					data-toggle="modal"
+					data-target="#confirmAccDelete"
+				>
+					Delete Account
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- The Modal -->
+	<div class="modal fade" id="confirmAccDelete">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Confirm Account Removal</h4>
+					<button type="button" class="close" data-dismiss="modal">
+						&times;
+					</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					You are about to delete your account <b>forever</b>,
+					continue? (This will also remove all your torrents from the
+					website)
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<a href="/user/self/delete/">
+						<button type="button" class="btn btn-outline-danger">
+							Continue
+						</button>
+					</a>
+					<button
+						type="button"
+						class="btn btn-outline-primary"
+						data-dismiss="modal"
+					>
+						Cancel
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div id="all-items">
+				<h1><center>Your Torrents</center></h1>
+				{% for key, item in torrents.items() %} {% if item["user"] ==
+				det["username"] %}
+				<div class="item">
+					<a href="{{ item['magnet'] }}" class="item-link"
+						>{{ item['name'] }}</a
+					>
+
+					<button
+						class="btn btn-outline-secondary btn-sm show-details"
+					>
+						Details <i class="fa fa-caret-down"></i>
+						<span class="for-item"
+							>for:{{ rsc(item['name']).lower() }}</span
+						>
+					</button>
+
+					<div
+						class="details hidden"
+						id="{{ rsc(item['name']).lower() }}"
+					>
+						<table class="table-dark table-hover">
+							<tr>
+								<td>Name</td>
+								<td>{{ item["full_name"] }}</td>
+							</tr>
+
+							<tr>
+								<td>Magnet</td>
+								<td>
+									{% for i in range(30) %}{{ item["magnet"][i]
+									}}{% endfor %}...
+								</td>
+							</tr>
+
+							<tr>
+								<td>Size</td>
+								<td>
+									{{ item["size"] }}{{ item["size_type"] }}
+								</td>
+							</tr>
+
+							<tr>
+								<td>Type</td>
+
+								<td>
+									{{ item["type"] }} {% if not item["type"] in
+									["Music", "Other"] %} -> {{
+									item["minor_type"] }} {% endif %}
+								</td>
+							</tr>
+
+							<tr>
+								<td>Description</td>
+								<td>{{ item["desc"] }}</td>
+							</tr>
+
+							<tr>
+								<td>Edit</td>
+								<td>
+									<a href="/torrent/{{ key }}">
+										<button
+											type="submit"
+											class="btn btn-outline-primary btn-sm"
+										>
+											<i class="fa fa-pencil"></i>
+										</button>
+									</a>
+								</td>
+							</tr>
+
+							<tr>
+								<td>Remove</td>
+								<td>
+									<a href="/torrent/del/{{ key }}">
+										<button
+											class="btn btn-outline-danger btn-sm"
+										>
+											<i class="fa fa-trash"></i>
+										</button>
+									</a>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				{% endif %} {% endfor %}
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
+<!--  -->
+{% endblock %}
+<!-- Block End -->

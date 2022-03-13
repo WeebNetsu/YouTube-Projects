@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+
+<!-- Block Begin -->
+{% block head %}
+<!--  -->
+<title>Admin Panel</title>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/admin.css') }}"
+/>
+{% endblock %}
+<!-- Block End -->
+
+<!-- Block Begin -->
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col">
+        {% if category == "username" %}
+        <form action="/admin/mod/user/set/username" method="post">
+        {% elif category == "password" %}
+
+      <form action="/admin/mod/user/set/password" method="post">
+        {% elif category == "chmod" %}
+
+      <form action="/admin/mod/user/set/chmod" method="post">
+        {% endif %}
+      <!--  -->
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="username">Current Username:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Current Username"
+              minlength="4"
+              required
+              id="username"
+              name="username"
+              autofocus
+              autocomplete="off"
+            />
+          </div>
+        </div>
+      {% if category == "username" %}
+        <div class="col">
+          <div class="form-group">
+            <label for="new_username">New Username:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="The new username."
+              minlength="4"
+              required
+              id="new_username"
+              name="new_username"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+      {% elif category == "password" %}
+          <div class="col">
+            <div class="form-group">
+              <label for="new_password">New Password:</label>
+              <input
+                type="password"
+                class="form-control"
+                placeholder="The new password for the account."
+                minlength="8"
+                required
+                id="new_password"
+                name="new_password"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+
+        {% elif category == "chmod" %}
+          <div class="col">
+              <label>Change Moderator Status:</label>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="mod_lvl"
+                  value="0" checked>Remove Mod Status
+                </label>
+              </div>
+
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="mod_lvl"
+                  value="1">Give Mod Status
+                </label>
+              </div>
+          </div>
+        {% endif %}
+    </div>
+
+        <div class="form-group">
+          <label for="admin_password">Your Password:</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Confirm the change with your password."
+            minlength="4"
+            required
+            id="admin_password"
+            name="admin_password"
+          />
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-outline-warning"
+          onclick="confirmed()"
+        >
+          Submit Change
+        </button>
+
+        <button type="submit" class="hidden" id="real_deal">Real Submit</button>
+
+        <script>
+          function confirmed() {
+            if (confirm("Are you sure you want to change the user details?")) {
+              $("#real_deal").click();
+            }
+          }
+        </script>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
