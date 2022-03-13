@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+<!-- Block Begin -->
+{% block head %}
+<!--  -->
+{% if edit_username %}
+<title>Change Username</title>
+{% else %}
+<title>Change Password</title>
+{% endif %}
+
+<link
+	rel="stylesheet"
+	href="{{ url_for('static', filename='css/user.css') }}"
+/>
+{% endblock %}
+<!-- Block End -->
+
+<!-- Block Begin -->
+{% block body %}
+<div class="container">
+	{% for det in session %}
+	<!-- -->
+	{% if edit_username %}
+	<form action="/user/edit/username/change/" method="post">
+		<div class="form-group">
+			<label>Current Username:</label>
+			<input
+				type="text"
+				class="form-control"
+				value="{{ det['username'] }}"
+				disabled
+			/>
+		</div>
+
+		<div class="form-group">
+			<label for="new-name">New username:</label>
+			<input
+				type="text"
+				class="form-control"
+				placeholder="4 characters or longer"
+				id="new-name"
+				name="username"
+				minlength="4"
+				required
+			/>
+		</div>
+
+		<div class="form-group">
+			<label for="pwd">Your Password (to confirm change):</label>
+			<input
+				type="password"
+				class="form-control"
+				id="pwd"
+				name="password"
+				minlength="8"
+				required
+			/>
+		</div>
+
+		<button
+			type="button"
+			class="btn btn-outline-warning"
+			onclick="confirmed()"
+		>
+			Change Username
+		</button>
+		<button type="submit" class="hidden" id="real_deal">Real Submit</button>
+
+		<script>
+			function confirmed() {
+				if (confirm("Are you sure you want to change your username?")) {
+					$("#real_deal").click();
+				}
+			}
+		</script>
+	</form>
+
+	{% else %}
+
+	<form action="/user/edit/password/change/" method="post">
+		<div class="form-group">
+			<label for="new-name">New Password:</label>
+			<input
+				type="password"
+				class="form-control"
+				placeholder="8 characters or longer"
+				id="new-name"
+				name="password"
+				minlength="8"
+				required
+			/>
+		</div>
+
+		<div class="form-group">
+			<label for="new-name">Retype New Password:</label>
+			<input
+				type="password"
+				class="form-control"
+				placeholder="8 characters or longer"
+				id="new-name"
+				name="password_confirm"
+				minlength="8"
+				required
+			/>
+		</div>
+
+		<div class="form-group">
+			<label for="pwd">Your Current Password (to confirm change):</label>
+			<input
+				type="password"
+				class="form-control"
+				id="pwd"
+				name="old_password"
+				minlength="8"
+				required
+			/>
+		</div>
+
+		<button
+			type="button"
+			class="btn btn-outline-warning"
+			onclick="confirmed()"
+		>
+			Change Password
+		</button>
+		<button type="submit" class="hidden" id="real_deal">Real Submit</button>
+
+		<script>
+			function confirmed() {
+				if (confirm("Are you sure you want to change your password?")) {
+					$("#real_deal").click();
+				}
+			}
+		</script>
+	</form>
+	{% endif %}
+	<!--  -->
+	{% endfor %}
+</div>
+<!--  -->
+{% endblock %}
+<!-- Block End -->
