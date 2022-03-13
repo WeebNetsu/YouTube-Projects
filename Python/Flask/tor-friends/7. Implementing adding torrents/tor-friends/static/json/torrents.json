@@ -1,0 +1,13 @@
+{
+    "1": {
+        "full_name": "My Boss",
+        "name": "Luke Skywalker",
+        "magnet": "magnet:?sdasdasdas",
+        "size": "234",
+        "size_type": "GB",
+        "type": "Game",
+        "minor_type": "Android",
+        "desc": "Cool stuff my dude",
+        "user": "user"
+    }
+}
