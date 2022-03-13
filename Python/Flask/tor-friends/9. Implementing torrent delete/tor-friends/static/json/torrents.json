@@ -1,0 +1,13 @@
+{
+    "1": {
+        "full_name": "My Boss 2",
+        "name": "Luke Skywalker",
+        "magnet": "magnet:?sdasdasdas",
+        "size": "234",
+        "size_type": "MB",
+        "type": "Video",
+        "minor_type": "Movie",
+        "desc": "Cool stuff my dude",
+        "user": "user"
+    }
+}

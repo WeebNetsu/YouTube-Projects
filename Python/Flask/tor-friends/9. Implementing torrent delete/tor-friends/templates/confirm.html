@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+<!-- Block Begin -->
+{% block head %}
+<title>Confirm | Tor-Friends</title>
+
+<link
+	rel="stylesheet"
+	href="{{ url_for('static', filename='css/index.css') }}"
+/>
+{% endblock %}
+<!-- Block End -->
+
+<!-- Block Begin -->
+{% block body %}
+<style>
+	.buttons {
+		margin-top: 1rem;
+	}
+</style>
+
+<div class="container">
+	<h1>Are you sure you want to <b>permanently delete</b> the torrent?</h1>
+	<form
+		action="/torrent/del/{{ tor_id }}/confirmed"
+		method="post"
+		class="row"
+	>
+		<div class="col-md-2 buttons">
+			<button type="submit" class="btn btn-outline-danger">
+				Continue
+			</button>
+		</div>
+
+		<div class="col-md-2 buttons">
+			<a href="/">
+				<button type="button" class="btn btn-outline-info">
+					Cancel
+				</button>
+			</a>
+		</div>
+	</form>
+</div>
+{% endblock %}
+<!-- Block End -->
