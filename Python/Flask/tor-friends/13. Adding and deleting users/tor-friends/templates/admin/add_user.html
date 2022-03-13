@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+<!-- Block Begin -->
+{% block head %}
+<!--  -->
+<title>Add User</title>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/user.css') }}"
+/>
+{% endblock %}
+<!-- Block End -->
+
+<!-- Block Begin -->
+{% block body %}
+<div class="container">
+  <h1>Add New User</h1>
+
+  <form action="/admin/user/added" method="post">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Any random username will do. They can change it."
+        minlength="4"
+        required
+        id="username"
+        name="username"
+        autofocus
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="password"
+        minlength="8"
+        required
+        placeholder="Easy password should do. They can change it later."
+      />
+    </div>
+
+    <div class="form-check">
+      <label class="form-check-label">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="is_mod"
+          value="1"
+        />
+        Mod
+      </label>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-outline-success">Add User</button>
+  </form>
+</div>
+
+{% if exsists %}
+<script>
+  alert("Username already exists");
+</script>
+{% endif %}
+<!--  -->
+{% if useradded %}
+<script>
+  alert("User added successfully");
+</script>
+{% endif %}
+
+<!--  -->
+{% endblock %}
+<!-- Block End -->

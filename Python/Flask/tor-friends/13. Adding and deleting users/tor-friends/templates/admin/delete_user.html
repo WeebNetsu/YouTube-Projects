@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+<!-- Block Begin -->
+{% block head %}
+<!--  -->
+<title>Delete User</title>
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/user.css') }}"
+/>
+{% endblock %}
+<!-- Block End -->
+
+<!-- Block Begin -->
+{% block body %}
+<div class="container">
+  <h1>Remove User</h1>
+
+  <form action="/admin/user/deleted" method="post">
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter an existing username"
+        minlength="4"
+        required
+        id="username"
+        name="username"
+        autofocus
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Your Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        name="admin_password"
+        minlength="8"
+        required
+        placeholder="This is to confirm the delete."
+      />
+    </div>
+
+    <br />
+    <button type="button" class="btn btn-outline-danger" onclick="confirmed()">
+      Remove User
+    </button>
+
+    <button type="submit" class="hidden" id="real_deal">Real Submit</button>
+
+    <script>
+      function confirmed() {
+        if (
+          confirm(
+            "Are you sure you want to remove this user? This will remove their account and all their torrents."
+          )
+        ) {
+          $("#real_deal").click();
+        }
+      }
+    </script>
+  </form>
+</div>
+
+<script>
+  $(document).on("keypress", function (e) {
+    if (e.which == 13) {
+      confirmed();
+    }
+  });
+</script>
+
+{% endblock %}
+<!-- Block End -->

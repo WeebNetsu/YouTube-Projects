@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+<!-- Block Begin -->
+{% block head %}
+<!--  -->
+<title>Admin Panel</title>
+
+<link
+	rel="stylesheet"
+	href="{{ url_for('static', filename='css/admin.css') }}"
+/>
+{% endblock %}
+<!-- Block End -->
+
+<!-- Block Begin -->
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-4 btn-item">
+			<a class="dropdown-item send-link center" href="/admin/user/add">
+				<button class="btn btn-outline-primary">
+					<i class="fa fa-user-plus"></i> Add User
+				</button>
+			</a>
+		</div>
+
+		<div class="col-sm-4 center btn-item">
+			<button
+				type="button"
+				class="btn btn-outline-primary dropdown-toggle send-link-btn"
+				data-toggle="dropdown"
+			>
+				<i class="fa fa-user"></i> Edit User
+			</button>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="/admin/user/mod/username"
+					>Username</a
+				>
+				<a class="dropdown-item" href="/admin/user/mod/password"
+					>Password</a
+				>
+				<a class="dropdown-item" href="/admin/user/mod/chmod">Mod</a>
+			</div>
+		</div>
+
+		<div class="col-sm-4 btn-item">
+			<a class="dropdown-item send-link center" href="/admin/user/delete">
+				<button class="btn btn-outline-primary">
+					<i class="fa fa-user-times"></i> Remove User
+				</button>
+			</a>
+		</div>
+	</div>
+</div>
+<!--  -->
+{% endblock %}
+<!-- Block End -->
