@@ -13,6 +13,8 @@ All my programming projects for my YouTube channel(s) goes here
   - [Creating the User class - Creating a Banking System with C++ (Part 2)](https://youtu.be/33nz5L5IEW0)
 - Run Lua in C++
   - [Soon]
+- MySQL Connection
+  - [Soon]
 
 ### HTML
 
