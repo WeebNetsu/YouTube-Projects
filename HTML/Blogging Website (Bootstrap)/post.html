@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Add site description -->
+		<meta name="description" content="Post a blog to Bloggers Paradise!" />
+
+		<!-- Fontawesome -->
+		<!-- https://fontawesome.com/download -->
+		<link rel="stylesheet" type="text/css" href="src/fontawesome/css/all.css" />
+
+		<!-- Latest compiled and minified CSS -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
+		<title>Post Blog</title>
+
+		<link rel="shortcut icon" href="src/images/logo.png" type="image/x-icon" />
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-md bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="index.html">BP</a>
+
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#collapsibleNavbar"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div
+					id="collapsibleNavbar"
+					class="collapse navbar-collapse justify-content-center"
+				>
+					<!-- Links -->
+					<ul class="navbar-nav me-4">
+						<li class="nav-item">
+							<a class="nav-link" href="index.html"
+								><i class="fa fa-house-user"></i>
+								Home
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="profile.html">
+								<i class="fa fa-user"></i> Your Profile
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="post.html">
+								<i class="fa-solid fa-feather-pointed"></i> Post Blog
+							</a>
+						</li>
+					</ul>
+
+					<form class="d-flex">
+						<input class="form-control me-2" type="text" placeholder="Search" />
+						<button class="btn btn-primary" type="button">
+							<i class="fa fa-search"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<form action="/action_page.php">
+				<div class="mb-3 mt-3">
+					<label for="title" class="form-label">Blog Title: </label>
+					<input
+						type="text"
+						placeholder="At my job today..."
+						class="form-control"
+						id="title"
+						minlength="10"
+						maxlength="30"
+						required
+					/>
+				</div>
+				<div class="mb-3">
+					<label for="content" class="form-label">Blog Content: </label>
+					<textarea
+						placeholder="This week was really strange..."
+						class="form-control"
+						id="content"
+						cols="30"
+						rows="10"
+						minlength="50"
+						maxlength="500"
+						required
+					></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Post!</button>
+			</form>
+		</div>
+	</body>
+</html>
