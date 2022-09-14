@@ -22,15 +22,15 @@ If you are using Windows and you have to include the MySQL system path to your I
 #include <tuple>
 
 // this might change depending on your install, it can be #include <mariadb/mysql.h> you never know
-#include <mysql/mysql.h> // /usr/includes/mariadb/mysql.h
+#include <mysql/mysql.h> // /usr/include/mariadb/mysql.h
 #include <mysql/mysqld_error.h>
 /*
     The above include may change to mysql/mysql.h or mysql.h or even something else depending
     on what OS you use and what database language you're using. On Parrot OS the default is
-    mariadb and can be found in /usr/includes/mariadb/
+    mariadb and can be found in /usr/include/mariadb/
 
     If you use a different Linux distro and use MySQL, then you'll probably find it in
-    /usr/includes/mysql/
+    /usr/include/mysql/
 */
 
 struct SQLConnection
@@ -92,7 +92,6 @@ auto execSQLQuery(MYSQL *connection, std::string query)
     if (mysql_query(connection, query.c_str()))
     {
         std::cout << "MySQL Query Error: " << mysql_error(connection) << std::endl;
-        mysql_error(connection);
         success = false;
     }
 
