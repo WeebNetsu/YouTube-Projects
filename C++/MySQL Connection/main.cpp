@@ -114,7 +114,7 @@ int main(int argc, char const *argv[])
     if (!success)
     {
         // you can handle any errors here
-        return;
+        return 1;
     }
 
     // get the results from executing commands
@@ -123,7 +123,7 @@ int main(int argc, char const *argv[])
     if (!result.success)
     {
         // handle any errors
-        return;
+        return 1;
     }
 
     std::cout << ("Database Output:\n") << std::endl;
