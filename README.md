@@ -12,8 +12,7 @@ All my programming projects for my YouTube channel(s) goes here
   - [Setting everything up - Creating a Banking System with C++ (Part 1)](https://youtu.be/xzqlI4OJ0Vg)
   - [Creating the User class - Creating a Banking System with C++ (Part 2)](https://youtu.be/33nz5L5IEW0)
 - [Run Lua in C++](https://youtu.be/DSHAml7EoLE)
-- MySQL Connection
-  - [Soon]
+- [MySQL Connection](https://youtu.be/WlEFQPvKUPo)
 
 ### HTML
 
