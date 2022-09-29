@@ -1,3 +1,3 @@
 export FLASK_APP=tor-friends
-export FLASK_ENV=development
+export FLASK_DEBUG=true
 flask run
