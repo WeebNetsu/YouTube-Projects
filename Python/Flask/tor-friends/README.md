@@ -24,6 +24,10 @@ Currently, if someone tries to report a torrent they think is fake or spam, they
 
 It could be nice if a user could follow another user if they like the type of torrents the user uploads. Then allow the user to see a feed of all the torrents released by the people they follow/
 
+#### Store torrents in a database
+
+Currently the torrents are stored in a .json file. It would be better if it was stored in a database, similar to the user accounts.
+
 #### Add notifications
 
 Add notifications! If someone follows you, get notified! A torrent was marked as spam? Notify the admin! Add a notification page or section that will display all the user's notifications.
