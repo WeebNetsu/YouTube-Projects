@@ -18,3 +18,12 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # don't track modification
 db.init_app(app)  # initialize the db with the flask app
 
 app.register_blueprint(root_page, url_prefix="/")
+
+"""
+Creating the databse:
+with app.app_context():
+    db.create_all()
+
+In Shell:
+from __init__ import db, Users
+"""
