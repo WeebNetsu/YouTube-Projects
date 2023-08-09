@@ -1,0 +1,82 @@
+/* PAGE HEADER */
+
+#page-header {
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+#page-header #page-subtitle {
+    /* I don't really want to show the page subtitle anymore */
+    display: none;
+}
+
+#page-header #page-featured-post {
+    margin-top: 0.5rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* PAGE BODY */
+
+#page-main-content {
+    padding: var(--default-padding);
+}
+
+#page-main-content .topic-item {
+    /* make each item look sexy */
+    margin-bottom: 1rem;
+    background-color: #b9b9b9;
+    padding: var(--default-padding);
+    border-radius: 10px;
+    transition: 1s;
+    box-shadow: 1px 1px 5px #000;
+}
+
+#page-main-content .topic-item .topic-item-author::before {
+    /* Prepend text to author name */
+    content: 'Author: ';
+}
+
+#page-main-content .topic-item .topic-item-author {
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+    /* span is of display type inline, which makes it
+    difficult to apply margin and padding to */
+    display: block;
+}
+
+#page-main-content .topic-item .topic-item-button {
+    padding: 0.3rem;
+    margin-top: 0.4rem;
+    background-color: #0000;
+    border: none;
+    cursor: pointer;
+    transition: 500ms;
+    font-size: 1rem;
+}
+
+#page-main-content .topic-item .topic-item-button.like-button:hover {
+    color: rgb(42, 138, 42);
+}
+
+
+#page-main-content .topic-item .topic-item-button.dislike-button:hover {
+    color: rgb(189, 36, 36);
+}
+
+#page-main-content .topic-item .continue-reading-link {
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+#page-main-content .topic-item .continue-reading-link::after {
+    content: "?";
+}
+
+/* PAGE FOOTER */
+
+#page-footer {
+    padding-bottom: var(--default-padding);
+}

@@ -18,6 +18,8 @@ All my programming projects for my YouTube channel(s) goes here
 
 - [Blogging Website](https://youtu.be/gBjErvKBeUs)
 - [Blogging Website (_Bootstrap_)](https://youtu.be/zaLOocqf2I4)
+- Blogging Website (_CSS_) [soon]
+<!-- - [Blogging Website (_CSS_)](https://youtu.be/zaLOocqf2I4) -->
 
 ### JavaScript
 
@@ -25,8 +27,7 @@ All my programming projects for my YouTube channel(s) goes here
 
 ### Kotlin
 
-- Todo App
-  - [Soon]
+- Todo App [soon]
 
 ### Lua
 
@@ -36,11 +37,9 @@ All my programming projects for my YouTube channel(s) goes here
 
 ### Python
 
-- Basic Encrypting and Decrypting
-  - [soon]
+- Basic Encrypting and Decrypting [soon]
 - Flask
-  - Tor Friends
-    - [soon]
+  - Tor Friends [soon]
 - [Itch Scraper](https://youtu.be/sXNdbLoqGwY)
 
 ### Other

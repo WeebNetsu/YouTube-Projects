@@ -1,0 +1,13 @@
+/* VARIABLES */
+:root {
+    --color-primary: #109fc3;
+    --default-padding: 1rem;
+}
+
+/* GLOBAL STYLES */
+* {
+    /* remove margin and padding from all elements on 
+    the page */
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,28 @@
+#profile {
+    margin: 0.5rem;
+}
+
+#profile #profile-info {
+    padding: var(--default-padding);
+}
+
+#profile #profile-info .edit-button {
+    background-color: transparent;
+    border: none;
+    padding: 0.1rem;
+    cursor: pointer;
+}
+
+#profile #profile-info #profile-photo-container {
+    /* align the image to the page center */
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#profile #profile-info #profile-photo-container #profile-photo {
+    /* make the image look good and be responsive */
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px;
+}

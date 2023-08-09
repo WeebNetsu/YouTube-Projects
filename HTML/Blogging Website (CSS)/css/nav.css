@@ -1,0 +1,31 @@
+/* PAGE NAVIGATION */
+#page-nav {
+    padding: var(--default-padding);
+    background-color: var(--color-primary);
+}
+
+#page-nav>ul {
+    /* make nav bar a single line */
+    display: flex;
+    justify-content: space-between;
+
+    /* remove dots from list items */
+    list-style: none;
+}
+
+#page-nav li#active-link a {
+    color: #fff;
+}
+
+#page-nav>ul a {
+    /* remove underlines from links */
+    text-decoration: none;
+    color: #000;
+    transition: 300ms;
+    font-style: italic;
+}
+
+#page-nav>ul a:hover {
+    color: #fff;
+    font-weight: bold;
+}
