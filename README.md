@@ -18,7 +18,7 @@ All my programming projects for my YouTube channel(s) goes here
 
 - [Blogging Website](https://youtu.be/gBjErvKBeUs)
 - [Blogging Website (_Bootstrap_)](https://youtu.be/zaLOocqf2I4)
-- Blogging Website (_CSS_) [soon]
+- [Blogging Website (_CSS_)](https://youtu.be/lUE8qsDX58g)
 <!-- - [Blogging Website (_CSS_)](https://youtu.be/zaLOocqf2I4) -->
 
 ### JavaScript
