@@ -24,6 +24,7 @@ All my programming projects for my YouTube channel(s) goes here
 ### JavaScript
 
 - [Chat App](https://youtu.be/1D0UKDXIRDQ)
+- [AWS Large Multi-Part File Uploading](https://youtu.be/SQWJ_goOxGs) (Coming Soon)
 
 ### Kotlin
 
