@@ -1,0 +1,95 @@
+What needs to be covered
+- Installing Meteor.js
+- Creating a TypeScript React Meteor Project (feel free to cover some https://v2-docs.meteor.com/commandline)
+- Collections
+- Allaning Roles
+- Startup
+- Accounts (signup/login)
+- USE UNDERSCORE instead of lodash
+- Method Calls
+- Trackers
+- Check https://v2-docs.meteor.com/api/check
+- Deploying Galaxy
+- Deploying to AWS with MUP
+
+
+Tutorials (plan: Admin Dashboard):
+0. What is Meteor (slideshow)
+1. Installing METEOR and creating a simple project
+	- meteor create --typescript project name
+	- Show all the folders and files in the generated project
+	- Delete tests folder
+    - Delete test folder link from package.json
+2. Add proper typescript support and implement router (https://github.com/WeebNetsu/meteor-typescript-template)
+	- cp -R ../meteor-typescript-template/typings/ .
+	- cp -R ../meteor-typescript-template/imports/types ./imports/
+	- npm install antd @ant-design/icons
+	- mention https://docs.meteor.com/packages/accounts-ui.html (we will not be using it)
+	- Delete hello and info .tsx files
+	- Fix app.tsx to be a default export and fix main.tsx to reflect that
+	- Delete everyting in api/ folder
+	- Delete everything inside server/main.ts
+	- Create HomePage folder and file
+	- Create NotFoundPage folder and file
+	- Create LoginPage folder and file (no styling needed yet)
+	- Install wouter meteor npm i wouter (react router has issues in meteor)
+	- Add accounts-password package (to see if user is logged in and later to help them log in)
+	- Create routes.tsx file and add routes (order matters)
+	- Add routes to App.tsx (note that we do not use route renderer yet)
+3. Login And Signup
+    - Add account/password support meteor add accounts-password
+    - Create import/api/users folder and files
+    - Create import/api/usersProfile folder and files
+    - COPY (and explain) needed code from import/api/utils folder to here
+    - create imports/startup folder and files
+    - import startup code in server main.ts
+    - install @netsu/js-utils
+    - create imports/utils/errors.ts and all code inside
+    - design and implement signup page imports/ui/SignupPage/index.tsx
+    - Add Signup page to routes
+    - design and implement login page imports/ui/LoginPage/index.tsx
+    - implement set.user.create in imports/api/users/methods/set.ts
+    - implement stringContainsOnlyLettersAndNumbers in imports/utils/checks.ts
+    - implement entire imports/utils/serverErrors.ts file
+    - Add simple logout button to app.tsx
+4. Posting Content
+    - Rename home page to browse page
+    - Add userId to BasicSiteProps
+    - Start rendering routes using React.cloneElement (not not-logged in routes tho)
+    - Create post collection (remember to add to imports and utils)
+    - create browse page
+    - create imports/ui/components/CreatePost
+    - create imports/utils/constants/index.ts
+    - implement set.post.create in imports/api/post/methods/set.ts
+    - create server/utils/meteor.ts
+5. Styling
+    - Add logo in public folder
+    - update main.css styling
+    - Add userProfile to BasicSiteProps
+    - Create RouteRenderer
+    - Enable dark mode on ant design
+    - implement fetchUserProfile in app.tsx
+    - remove basic logout button
+6. Post Management
+    - Create post like collection
+    - Add post delete method in imports/api/post/methods/set.ts
+    - Install lodash meteor npm i lodash @types/lodash
+    - Update PostCard/index.tsx
+7. User Profile
+    - create imports/ui/UserProfilePage/index.tsx
+    - Add new page to routes
+    - Create imports/utils/index.ts
+    - Create /server/utils/s3
+    - Install @aws-sdk/client-s3 and @aws-sdk/s3-request-presigner
+    - Create imports/api/aws
+    - Update imports/api/userProfile/methods/set.ts
+    - Add settings.json
+    - Update package.json run command to meteor --settings settings.json
+    - Update gitignore to include settings.json
+    - add profilePhoto to BasicSiteProps
+    - fetch profile on app.tsx
+    - fetch profile photos in post cards
+8. Roles And Logging (including site defaults and whole main.ts + including admin page) [end off copy/paste of end result code]
+    - install meteor/alanning:roles
+9. Deploying To Meteor Galaxy
+10. Deploying to AWS
