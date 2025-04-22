@@ -1,5 +1,5 @@
 import { LoadingOutlined } from "@ant-design/icons";
-import { Button, ConfigProvider, theme } from "antd";
+import { ConfigProvider, theme } from "antd";
 import { Meteor } from "meteor/meteor";
 import { useTracker } from "meteor/react-meteor-data";
 import React from "react";
@@ -68,14 +68,6 @@ const App: React.FC = () => {
 					</Route>
 				))}
 			</Switch>
-
-			<Button
-				onClick={() => {
-					Meteor.logout();
-				}}
-			>
-				Logout
-			</Button>
 		</ConfigProvider>
 	);
 };

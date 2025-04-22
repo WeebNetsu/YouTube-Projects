@@ -20,8 +20,8 @@ import {
 	MiniBrowsePageUserProfileModel,
 } from "../..";
 import { MethodGetAWSFileFromS3Model } from "/imports/api/aws/models";
-import PostModel, { MethodSetPostDeleteModel } from "/imports/api/post/models";
-import {
+import { MethodSetPostDeleteModel } from "/imports/api/post/models";
+import PostLikeModel, {
 	MethodPublishPostLikeTotalLikesModel,
 	MethodPublishPostLikeUserLikedModel,
 	MethodSetPostLikeLikeOrUnlikeModel,
@@ -75,8 +75,8 @@ const PostCard: React.FC<PostCardProps> = ({
 		const res = PostLikeCollection.find({ postId: post._id }).count();
 		return res;
 	}, [post._id]);
-	const userLike: Partial<PostModel> | undefined = useTracker(
-		() => PostLikeCollection.find({ postId: post._id, userId }).count(),
+	const userLike: Partial<PostLikeModel> | undefined = useTracker(
+		() => PostLikeCollection.findOne({ postId: post._id, userId }),
 		[post._id, userId]
 	);
 

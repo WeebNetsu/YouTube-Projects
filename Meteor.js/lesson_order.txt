@@ -51,7 +51,6 @@ Tutorials (plan: Admin Dashboard):
     - implement set.user.create in imports/api/users/methods/set.ts
     - implement stringContainsOnlyLettersAndNumbers in imports/utils/checks.ts
     - implement entire imports/utils/serverErrors.ts file
-    - Add simple logout button to app.tsx
 4. Posting Content
     - Rename home page to browse page
     - Add userId to BasicSiteProps
@@ -62,6 +61,7 @@ Tutorials (plan: Admin Dashboard):
     - create imports/utils/constants/index.ts
     - implement set.post.create in imports/api/post/methods/set.ts
     - create server/utils/meteor.ts
+    - Add simple logout button to app.tsx
 5. Styling
     - Add logo in public folder
     - update main.css styling

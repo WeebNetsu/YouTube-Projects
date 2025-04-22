@@ -8,8 +8,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useLocation } from 'wouter';
 import { FetchDataType, MiniBrowsePagePostModel, MiniBrowsePageUserProfileModel } from '../..';
 import { MethodGetAWSFileFromS3Model } from '/imports/api/aws/models';
-import PostModel, { MethodSetPostDeleteModel } from '/imports/api/post/models';
-import {
+import { MethodSetPostDeleteModel } from '/imports/api/post/models';
+import PostLikeModel, {
     MethodPublishPostLikeTotalLikesModel,
     MethodPublishPostLikeUserLikedModel,
     MethodSetPostLikeLikeOrUnlikeModel,
@@ -54,10 +54,10 @@ const PostCard: React.FC<PostCardProps> = ({ post, userId, postUser, userRoles, 
         const res = PostLikeCollection.find({ postId: post._id }).count();
         return res;
     }, [post._id]);
-    const userLike: Partial<PostModel> | undefined = useTracker(
-        () => PostLikeCollection.find({ postId: post._id, userId }).count(),
-        [post._id, userId],
-    );
+	const userLike: Partial<PostLikeModel> | undefined = useTracker(
+		() => PostLikeCollection.findOne({ postId: post._id, userId }),
+		[post._id, userId]
+	);
 
     const handleLikeOrUnlikePost = useMemo(
         () =>
